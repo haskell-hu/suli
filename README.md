@@ -1,2 +1,3 @@
 # suli
-Haskell Suli - érdekességek az iskolapadból
+
+Haskell Suli - érdekességek az iskolapadból.
