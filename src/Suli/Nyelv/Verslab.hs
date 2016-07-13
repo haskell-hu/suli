@@ -5,11 +5,12 @@ Lásd https://hu.wikipedia.org/wiki/Időmértékes_verselés.
 {-# LANGUAGE OverloadedStrings #-}
 module Suli.Nyelv.Verslab where
 
+import Data.Char (toUpper)
 import Data.Text (Text)
 import qualified Data.Text as T
 
-rovidMaganhangzok :: [Char]
-rovidMaganhangzok =
+kisRovidMaganhangzok :: [Char]
+kisRovidMaganhangzok =
     [ 'a'
     , 'i'
     , 'u', 'ü'
@@ -17,14 +18,22 @@ rovidMaganhangzok =
     , 'o', 'ö'
     ]
 
-hosszuMaganhangzok :: [Char]
-hosszuMaganhangzok =
+kisHosszuMaganhangzok :: [Char]
+kisHosszuMaganhangzok =
     [ 'á'
     , 'í'
     , 'ú', 'ű'
     , 'é'
     , 'ó', 'ő'
     ]
+
+nagyRovidMaganhangzok, nagyHosszuMaganhangzok :: [Char]
+nagyRovidMaganhangzok = map toUpper kisRovidMaganhangzok
+nagyHosszuMaganhangzok = map toUpper kisHosszuMaganhangzok
+
+rovidMaganhangzok, hosszuMaganhangzok :: [Char]
+rovidMaganhangzok = kisRovidMaganhangzok ++ nagyRovidMaganhangzok
+hosszuMaganhangzok = kisHosszuMaganhangzok ++ nagyHosszuMaganhangzok
 
 maganhangzok :: [Char]
 maganhangzok = rovidMaganhangzok ++ hosszuMaganhangzok
